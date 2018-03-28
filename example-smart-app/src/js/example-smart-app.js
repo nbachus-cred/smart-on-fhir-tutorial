@@ -22,9 +22,33 @@
                       }
                     }
                   });
+        var obv2 = smart.patient.api.fetchAll({
+                    type: 'CarePlan',
+                    query: {
+                      code: {
+                       
+                      }
+                    }
+                  });
+        var obv3 = smart.patient.api.fetchAll({
+                    type: 'DiagnosticReport',
+                    query: {
+                      code: {
+                       
+                      }
+                    }
+                  });
 
         $.when(pt, obv).fail(onError);
-
+        
+        $.when(pt, obv2).done(function(patient, obv2) {
+          return JSON.parse(obv2);
+        });
+        
+        $.when(pt, obv3).done(function(patient, obv3) {
+          return JSON.parse(obv3);
+        });
+        
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;

@@ -65,7 +65,7 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
-          p.ldl = patient.deceased;
+          p.ldl = JSON.stringify(patient, null, 4);
 
           ret.resolve(p);
         });

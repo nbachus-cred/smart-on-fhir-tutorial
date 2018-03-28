@@ -66,7 +66,7 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
-          p.ldl = JSON.stringify(patient, null, 4);
+          p.ldl = byCodes('8480-6');
 
           ret.resolve(p);
         });

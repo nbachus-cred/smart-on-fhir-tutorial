@@ -22,20 +22,8 @@
                       }
                     }
                   });
-        var obv2 = smart.patient.api.fetchAll({
-                    type: 'CarePlan',
-                    query: {
-                      code: {
-                       
-                      }
-                    }
-                  });
 
         $.when(pt, obv).fail(onError);
-        
-        $.when(pt, obv2).done(function(patient, obv2) {
-          return JSON.parse(obv2);
-        });
         
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');

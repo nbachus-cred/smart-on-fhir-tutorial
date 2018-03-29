@@ -15,7 +15,7 @@
                     type: 'CarePlan',
                     query: {
                       id: { 
-                        $or: ['7184074']
+                        //$or: ['7184074']
                         /*$or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
                               'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
                               'http://loinc.org|2089-1', 'http://loinc.org|55284-4']*/
@@ -64,7 +64,11 @@
             p.diastolicbp = diastolicbp;
           }
 
-          p.hdl = getQuantityValueAndUnit(hdl[0]);
+          for (var i = 0; i < obv.length; i++) {
+                      p.hdl = p.hdl + obv[i].text;
+                    }
+
+          //p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
           p.ldl = byCodes('8480-6');
 

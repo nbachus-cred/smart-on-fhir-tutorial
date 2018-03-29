@@ -85,10 +85,10 @@
     function doStuff(smart) {
     if (smart.hasOwnProperty('patient')) {
     var patient = smart.patient;
-            var pt2 = patient.read();
+            var pt = patient.read();
             var output = "";
 
-        var obv2 = smart.patient.api.fetchAll({
+        var obv = smart.patient.api.fetchAll({
                             type: 'CarePlan',
                             query: {
                               id: {
@@ -99,14 +99,15 @@
                               }
                             }
                           });
-        $.when(pt2, obv2).fail(onError);
+        $.when(pt, obv).fail(onError);
 
-                $.when(pt2, obv2).done(function(patient, obv2) {
+                $.when(pt, obv).done(function(patient, obv) {
                     for (var i = 0; i < obv.length; i++) {
-                        output = output + obv2[i].text.div;
+                        output = output + obv[i].text.div;
                     }
+                    return output;
                 });
-                return output;
+                //return output;
                 } else {
                 onError();
                 }

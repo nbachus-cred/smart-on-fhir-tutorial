@@ -72,9 +72,11 @@
           p.ldl = getQuantityValueAndUnit(ldl[0]);
           p.ldl = byCodes('8480-6');
 
+          doStuff(smart, p);
+
           ret.resolve(p);
         });
-        doStuff(smart, p);
+
       } else {
         onError();
       }

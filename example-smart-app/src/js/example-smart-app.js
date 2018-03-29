@@ -82,40 +82,6 @@
       }
     }
 
-    function doStuff(smart) {
-    if (smart.hasOwnProperty('patient')) {
-    var patient = smart.patient;
-            var pt = patient.read();
-            var output = "";
-
-        var obv = smart.patient.api.fetchAll({
-                            type: 'CarePlan',
-                            query: {
-                              id: {
-                                //$or: ['7184074']
-                                /*$or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
-                                      'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
-                                      'http://loinc.org|2089-1', 'http://loinc.org|55284-4']*/
-                              }
-                            }
-                          });
-        $.when(pt, obv).fail(onError);
-
-                $.when(pt, obv).done(function(patient, obv) {
-                    for (var i = 0; i < obv.length; i++) {
-                        output = output + obv[i].text.div;
-                    }
-                    console.log(output);
-                    $('#ldl').html(output);
-                    ret.resolve();
-                    return output;
-                });
-                //return output;
-                } else {
-                onError();
-                }
-
-    }
 
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
@@ -184,6 +150,37 @@
     } else {
       return undefined;
     }
+  }
+
+      function doStuff(smart) {
+      if (smart.hasOwnProperty('patient')) {
+      var patient = smart.patient;
+              var pt = patient.read();
+              var output = "";
+
+          var obv = smart.patient.api.fetchAll({
+                              type: 'CarePlan',
+                              query: {
+                                id: {
+                                  //$or: ['7184074']
+                                  /*$or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
+                                        'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
+                                        'http://loinc.org|2089-1', 'http://loinc.org|55284-4']*/
+                                }
+                              }
+                            });
+          $.when(pt, obv).fail(onError);
+
+                  $.when(pt, obv).done(function(patient, obv) {
+                      for (var i = 0; i < obv.length; i++) {
+                          output = output + obv[i].text.div;
+                      }
+                      return output;
+                  });
+                  //return output;
+                  } else {
+                  onError();
+                  }
   }
 
   window.drawVisualization = function(p) {

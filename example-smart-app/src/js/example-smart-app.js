@@ -65,7 +65,7 @@
           }
 
           for (var i = 0; i < obv.length; i++) {
-                if (obv[i].code.coding[0].display <> "Entered in Error") {
+                if (obv[i].code.coding[0].display != "Entered in Error") {
                       p.hdl = p.hdl + obv[i].dateRecorded + "<br>   " +obv[i].code.coding[0].code + "<br>   " + obv[i].code.coding[0].display + "<br><br>";
                 }
           }

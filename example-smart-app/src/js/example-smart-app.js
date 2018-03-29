@@ -72,7 +72,7 @@
           p.ldl = getQuantityValueAndUnit(ldl[0]);
           p.ldl = byCodes('8480-6');
 
-          doStuff(smart, p);
+          p.ldl = doStuff(smart, p);
 
           ret.resolve(p);
         });
@@ -86,6 +86,7 @@
     if (smart.hasOwnProperty('patient')) {
     var patient = smart.patient;
             var pt = patient.read();
+            var output = "";
 
         var obv = smart.patient.api.fetchAll({
                             type: 'CarePlan',
@@ -102,9 +103,10 @@
 
                 $.when(pt, obv).done(function(patient, obv) {
                     for (var i = 0; i < obv.length; i++) {
-                        p.ldl = p.ldl + obv[i].text.div;
+                        output = output + obv[i].text.div;
                     }
                 });
+                return output;
                 } else {
                 onError();
                 }

@@ -106,6 +106,8 @@
                         output = output + obv[i].text.div;
                     }
                     console.log(output);
+                    $('#ldl').html(output);
+                    ret.resolve();
                     return output;
                 });
                 //return output;

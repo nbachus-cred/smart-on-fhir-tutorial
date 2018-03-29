@@ -65,7 +65,7 @@
           }
 
           for (var i = 0; i < obv.length; i++) {
-                      p.hdl = p.hdl + obv[i].text.div;
+                      p.hdl = p.hdl + obv[i].code.coding[0].code + " " + obv[i].code.coding[0].display + "\n";
                     }
 
           //p.hdl = getQuantityValueAndUnit(hdl[0]);

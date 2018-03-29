@@ -71,8 +71,8 @@
           }
 
           //p.hdl = getQuantityValueAndUnit(hdl[0]);
-          p.ldl = getQuantityValueAndUnit(ldl[0]);
-          p.ldl = byCodes('8480-6');
+          //p.ldl = getQuantityValueAndUnit(ldl[0]);
+          //p.ldl = byCodes('8480-6');
 
           //p.ldl = doStuff(smart);
 

@@ -84,7 +84,6 @@
     if (smart.hasOwnProperty('patient')) {
     var patient = smart.patient;
             var pt = patient.read();
-    }
 
         var obv = smart.patient.api.fetchAll({
                             type: 'CarePlan',
@@ -103,7 +102,7 @@
                     for (var i = 0; i < obv.length; i++) {
                         p.ldl = p.ldl + obv[i].text.div;
                     }
-                }
+                });
                 } else {
                 onError();
                 }

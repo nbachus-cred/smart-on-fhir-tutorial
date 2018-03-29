@@ -12,7 +12,7 @@
         var patient = smart.patient;
         var pt = patient.read();
                 var obv = smart.patient.api.fetchAll({
-                    type: 'CarePlan',
+                    type: 'Observation',
                     query: {
                       id: { 
                         //$or: ['7184074']
@@ -74,9 +74,40 @@
 
           ret.resolve(p);
         });
+        doStuff(smart, p);
       } else {
         onError();
       }
+    }
+
+    function doStuff(smart, p) {
+    if (smart.hasOwnProperty('patient')) {
+    var patient = smart.patient;
+            var pt = patient.read();
+    }
+
+        var obv = smart.patient.api.fetchAll({
+                            type: 'CarePlan',
+                            query: {
+                              id: {
+                                //$or: ['7184074']
+                                /*$or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
+                                      'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
+                                      'http://loinc.org|2089-1', 'http://loinc.org|55284-4']*/
+                              }
+                            }
+                          });
+        $.when(pt, obv).fail(onError);
+
+                $.when(pt, obv).done(function(patient, obv) {
+                    for (var i = 0; i < obv.length; i++) {
+                        p.ldl = p.ldl + obv[i].text.div;
+                    }
+                }
+                } else {
+                onError();
+                }
+
     }
 
     FHIR.oauth2.ready(onReady, onError);

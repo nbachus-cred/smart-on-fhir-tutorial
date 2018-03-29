@@ -152,6 +152,12 @@
     }
   }
 
+  function onError() {
+        console.log('Loading error', arguments);
+        ret.reject();
+      }
+
+
       function doStuff(smart) {
       if (smart.hasOwnProperty('patient')) {
       var patient = smart.patient;

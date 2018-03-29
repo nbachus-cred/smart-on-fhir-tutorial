@@ -105,6 +105,7 @@
                     for (var i = 0; i < obv.length; i++) {
                         output = output + obv[i].text.div;
                     }
+                    console.output(output);
                     return output;
                 });
                 //return output;

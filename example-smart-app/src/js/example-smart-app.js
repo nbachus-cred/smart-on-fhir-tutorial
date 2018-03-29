@@ -12,7 +12,7 @@
         var patient = smart.patient;
         var pt = patient.read();
                 var obv = smart.patient.api.fetchAll({
-                    type: 'Observation',
+                    type: 'Condition',
                     query: {
                       id: { 
                         //$or: ['7184074']
@@ -72,7 +72,7 @@
           p.ldl = getQuantityValueAndUnit(ldl[0]);
           p.ldl = byCodes('8480-6');
 
-          p.ldl = doStuff(smart);
+          //p.ldl = doStuff(smart);
 
           ret.resolve(p);
         });

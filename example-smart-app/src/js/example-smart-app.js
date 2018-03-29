@@ -65,8 +65,10 @@
           }
 
           for (var i = 0; i < obv.length; i++) {
-                      p.hdl = p.hdl + obv[i].code.coding[0].code + " " + obv[i].code.coding[0].display + "\n";
-                    }
+                if (!obv[i].code.coding[0].display == "Entered in Error") {
+                      p.hdl = p.hdl + obv[i].code.coding[0].code + " " + obv[i].code.coding[0].display + "<br>";
+                }
+          }
 
           //p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
